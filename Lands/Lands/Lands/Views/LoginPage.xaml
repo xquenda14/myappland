@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lands.Views.LoginPage" 
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Login">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding Login}}">
+            <StackLayout Padding="10,20,10,5">
+                <Label Text="Login" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Image Source="icon" HeightRequest="50"></Image>
+
+                <Grid>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0"
+                        Text="E-mail"
+                       VerticalOptions="Center"
+                       />
+                <Entry Grid.Row="0" Grid.Column="1" 
+                           Placeholder="Ingresa tu correo electronico" FontSize="Small"
+                       Text="{Binding Email, Mode=TwoWay}"
+                       ></Entry>
+                <Label Grid.Row="1" Grid.Column="0"
+                           Text="Password" 
+                       VerticalOptions="Center" 
+
+                       />
+                <Entry Grid.Row="1" Grid.Column="1" 
+                           Placeholder="Ingresa tu password" IsPassword="True"  FontSize="Small"
+                       Text="{Binding Password, Mode=TwoWay}"
+                       ></Entry>
+
+                </Grid>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Rememberme" HorizontalOptions="StartAndExpand"></Label>
+                    <Switch HorizontalOptions="End" IsToggled="{Binding IsRemembered, Mode=TwoWay}" ></Switch>
+                </StackLayout>
+                <Label Text="Forgot your password" HorizontalOptions="Center" TextColor="Blue"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Login" BackgroundColor="Navy" TextColor="White" BorderRadius="23" HorizontalOptions="FillAndExpand"
+                            Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            ></Button>
+                    <Button Text="Register" BackgroundColor="Coral"  TextColor="White" BorderRadius="23" HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            ></Button>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="facebook" WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="twitter" WidthRequest="60"></Image>
+                    <Image Source="instagram" WidthRequest="100"></Image>
+                </StackLayout>
+                
+                <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                </ActivityIndicator>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
