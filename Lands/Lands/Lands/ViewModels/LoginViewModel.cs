@@ -98,6 +98,9 @@ namespace Lands.ViewModels
             this.IsRemembered = true;
             this.IsRunning = false;
             this.IsEnabled = true;
+
+            this.Email = "xquenda14@yahoo.com.mx";
+            this.Password = "1234";
         }
 
         #endregion

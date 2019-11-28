@@ -20,10 +20,15 @@ namespace Lands.ViewModels
 
         #endregion
 
-        private List<Land> landsList { get; set; }
+        #region Attributes
 
+        //private List<Land> landsList { get; set; }
         private ObservableCollection<LandItemViewModel> lands;
 
+        #endregion
+
+        #region Properties
+        
         public ObservableCollection<LandItemViewModel> Lands
         {
             get { return this.lands; }
@@ -56,11 +61,8 @@ namespace Lands.ViewModels
             }
         }
 
-
-
-
-
-
+        #endregion
+        
         #region Constructor
         public LandsViewModels()
         {
@@ -96,8 +98,8 @@ namespace Lands.ViewModels
                 return;
             }
 
-            landsList = (List<Land>)response.Result;
-
+            MainViewModel.GetInstance().LandsList = (List<Land>)response.Result;
+            
             this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             this.IsRefreshing = false;
 
@@ -106,7 +108,7 @@ namespace Lands.ViewModels
         private IEnumerable<LandItemViewModel> ToLandItemViewModel()
         {
 
-            return this.landsList.Select(l => new LandItemViewModel
+            return MainViewModel.GetInstance().LandsList.Select(l => new LandItemViewModel
             {
                 Alpha2Code = l.Alpha2Code,
                 Alpha3Code = l.Alpha3Code,

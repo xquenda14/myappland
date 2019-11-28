@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabs="clr-namespace:Lands.Views"
              x:Class="Lands.Views.LandTabbedPage"
-            Title="Land"
+            Title="Information"
             >
     <TabbedPage.Children>
         <tabs:LandPage />
